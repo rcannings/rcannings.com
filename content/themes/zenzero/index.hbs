@@ -1,0 +1,86 @@
+{{!< default}}
+
+<header class="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="vertical">
+        <div data-animate="fadeDown" class="site-head-content inner">
+            
+        </div>
+    </div>
+    
+    <a data-animate="swing" class="arrow-header" href='#'></a>
+</header>
+
+<main class="content-index content" role="main">
+    {{! Including the menu template (partials/menu)}}
+    {{> menu}}
+
+    <div id="view-menu">
+        <div class="view-menu-cont">
+   
+            <a class="btn-select">
+               All tags 
+            </a>
+   
+            <ul class="menu-list-tag"></ul>
+        
+            <a class="list-view" href="#"></a>
+            <a class="grid-view grid-view-active" href="#"></a>
+   
+        </div> 
+    </div>
+
+</main>
+
+<div class='post-container grid-cont-post'>
+    {{#foreach posts}}
+        
+    <article class="{{post_class}}">
+
+        <span class="ico-featured"></span>
+    
+        <div class="post-cont">
+            
+            <header class="post-header">
+               
+                <span class="post-data"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span>
+               
+                <a href="{{url}}#disqus_thread" class="post-comment"></a>
+               
+                <h2 class="post-title post-title-grid"><a href="{{url}}">{{{title}}}</a></h2>
+            
+            </header>
+            
+            <a class="post-image" >{{content words="0"}}</a>
+            
+            <section class="post-excerpt">
+                <p>{{excerpt}}&hellip;</p>
+            </section>
+            
+            <div class="post-info">
+            
+                <span class="post-data"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span>
+            
+                <a href="{{url}}#disqus_thread" class="post-comment"></a>
+            
+                <a class="post-more" href="{{url}}">Read More</a>
+            
+             </div>
+        
+        </div>
+        
+        <ul class='hidden-tag-list'>
+            {{#each tags}}
+                <li>{{name}}</li>
+            {{/each}}
+        </ul>
+    </article>
+    
+    <hr>
+    
+    {{/foreach}}
+    
+</div>
+
+{{!! After all the posts, we have the previous/next pagination links }}
+
+{{pagination}}

@@ -1,0 +1,321 @@
+
+/* ==========================================================================
+   Table of Contents
+   ========================================================================== */
+
+/*
+
+    2.   General
+    4.   Header
+    5.   Main Menu
+    6.   General Post
+    7.   Single Post
+    9.   Pagination
+    10.  Footer
+    11.  Error
+
+*/
+
+/* ==========================================================================
+   2. General - Setting up some base styles
+   ========================================================================== */
+
+body {
+    color: #222;
+}
+
+::-moz-selection {
+    color: #222;
+    background: #f5f4f0;
+}
+
+::selection {
+    color: #222;
+    background: #f5f4f0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color:#389e8f;
+}
+
+a {
+    color: #222;
+}
+
+h1 a, h2 a, h3 a,
+h4 a, h5 a, h6 a {
+    color: #389e8f;
+}
+
+hr {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+blockquote {
+    border-left: #389e8f 0.4em solid;
+}
+
+blockquote small {
+    color: #ccc;
+}
+
+mark {
+    background-color: #389e8f;
+}
+
+code, tt {
+    border: 1px solid #bddfda;
+    background: #f5f4f0;
+}
+
+pre {
+    border: 1px solid #bddfda;
+    background: #f5f4f0;
+}
+
+kbd {
+    border: #ccc 1px solid;
+    color: #666;
+    text-shadow: #fff 0 1px 0;
+    background: #f4f4f4;
+    box-shadow: 
+        0 1px 0 rgba(0, 0, 0, 0.2), 
+        0 1px 0 0 #fff inset;
+}
+
+table th,
+table td {
+    border-top: 1px solid #efefef;
+}
+
+table th { color: #000; }
+
+table tbody + tbody { border-top: 2px solid #efefef; }
+
+table table table { background-color: #fff; }
+
+table tbody > tr:nth-child(odd) > td,
+table tbody > tr:nth-child(odd) > th {
+    background-color: #f6f6f6;
+}
+
+/* ==========================================================================
+   4. Header - The Header styles for the theme
+   ========================================================================== */
+
+.site-head {
+    color: #fff;
+    background-color: #389e8f;
+}
+
+.blog-title {
+    color:#fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.blog-description {
+    border-bottom:1px solid rgba(255,255,255,.5);
+    color:#63B6AA;
+} 
+
+/* ==========================================================================
+   5. Main Menu - The main menu
+   ========================================================================== */
+
+nav.top-nav{
+    background: rgba(16,105,92,.3);
+}
+
+nav.top-nav ul li a{
+    color: rgba(255,255,255,.5);
+}
+
+nav.top-nav ul li a.active, nav.top-nav ul li a:hover{
+    color:#fff;
+}
+
+
+/* main post and grid/list view*/
+
+#view-menu{
+    background-color:#f5f4f0;    
+}
+
+
+.btn-select{
+    background:url(../images/water/ico-menu-water.png) no-repeat 10px 50%;
+    border:1px solid #389e8f;
+    color:#389e8f;
+}
+
+ul.menu-list-tag li a, ul.menu-list-tag li span{
+    border:1px solid #389e8f;
+    color:#389e8f;
+}
+
+ul.menu-list-tag li a:hover{
+    background-color:#389e8f;
+    border:1px solid #389e8f;
+    color:#f5f4f0;
+    
+}
+
+.list-view{
+    background-image:url(../images/water/ico-view-list-water.png);
+}
+
+.grid-view{
+    background-image:url(../images/water/ico-view-grid-water.png);
+    
+}
+
+/* ==========================================================================
+   6. General Post - The general styles for the theme
+   ========================================================================== */
+
+/* Post header (list view) / Post info (grid view) */
+
+.post-data, .post-comment {
+    color: #222;
+}
+
+.post-comment {
+    background:url(../images/water/ico-comment-water.png) center left no-repeat;
+    padding: 0 0 0 18px; 
+}
+
+
+/* Post more for read more */
+
+a.post-more{
+    border: 1px solid rgba(56,158,143,.3);
+    color:#389e8f;
+}
+
+a.post-more:hover{
+   background-color:#389e8f;
+   color:#fff;
+}
+
+/* General */
+
+.featured .ico-featured{
+    background-image:url(../images/water/ico-featured-water.png);
+}
+
+/* View grid post */
+
+.grid-cont-post .post{
+    border: 1px solid rgba(0,0,0,.15);
+}
+
+/* ==========================================================================
+   7. Single Post - When you click on an individual post
+   ========================================================================== */
+
+h5.single-post-content-tag{
+    color: #389e8f;
+    border-top:1px solid rgba(0,0,0,.1);
+}
+
+.user-image {
+    border: 5px solid #f5f4f0;
+    background: #f5f4f0;
+}
+
+.post-footer {
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.post-footer h4 {
+    color:#389e8f;
+}
+
+.post-footer .share a:hover {
+    color: #50585D;
+} 
+
+.back-post a {
+    color: #389e8f;
+    border: 1px solid rgba(56,158,143,.3);
+}
+
+.back-post a:hover {
+    background-color:#389e8f;
+    color:#fff;
+}
+
+/* ==========================================================================
+   9. Pagination - Tools to let you flick between pages
+   ========================================================================== */
+
+.pagination a {
+    color: #389e8f;
+    border: 1px solid rgba(56,158,143,.3);
+}
+
+.pagination a:hover {
+    background-color:#389e8f;
+    color:#fff;
+}
+
+
+/* ==========================================================================
+   10. Footer - The bottom of every page
+   ========================================================================== */
+
+.site-footer {
+    color: #fff;
+    background-color: #564611;
+}
+
+.site-footer-over{
+    background: rgba(16,105,92,.3);
+}
+
+.site-footer a {
+    color: #fff;
+}
+
+.site-footer a:hover {
+    color: #CCBBC1;
+}
+
+.subscribe {
+    border: #389e8f 2px solid;
+}
+
+.subscribe:before {
+    color: #389e8f;
+}
+
+.tooltip {
+    color: rgba(255,255,255,0.9);
+    background: #389e8f;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.tooltip:after {
+    border-color: #389e8f transparent;
+}
+
+
+/* ==========================================================================
+   11. Error - Castom page error
+   ========================================================================== */
+
+.blog-message-error{
+    color: #389e8f;
+}
+
+.blog-beck-error{
+    color: #389e8f;
+    border: 1px solid rgba(56,158,143,.3);
+}
+
+.blog-beck-error:hover{
+    border-color:#389e8f;
+    background-color:#389e8f;
+    color:#fff;
+}

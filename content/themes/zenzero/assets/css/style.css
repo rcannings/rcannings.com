@@ -1,0 +1,1626 @@
+
+/* ==========================================================================
+   Table of Contents
+   ========================================================================== */
+
+/*
+
+    0.   Includes
+    1.   Icons
+    2.   General
+    3.   Utilities
+    4.   Header
+    5.   Main Menu
+    6.   General Post
+    7.   Single Post
+    8.   Third Party Elements
+    9.   Pagination
+    10.  Footer
+    11.  Error
+    12.  Media Queries (Tablet)
+    13.  Media Queries (Mobile)
+
+ */
+
+/* ==========================================================================
+   0. Includes - Ground zero
+   ========================================================================== */
+
+@import url(normalize.css);
+
+
+/* ==========================================================================
+   1. Icons - Sets up the icon font and respective classes
+   ========================================================================== */
+
+
+/* Apply these base styles to all share icons */
+.icon-feed, 
+.icon-twitter, 
+.icon-google-plus, 
+.icon-facebook {
+    background-image: url(../images/ico-social.png);
+}
+
+/* Each icon is created by inserting the corret character into the 
+   content of the :before pseudo element. Like a boss. */
+
+.icon-twitter {
+    background-position:-30px 0;
+}
+
+.icon-facebook {
+    background-position: 0 0;
+}
+
+.icon-google-plus {
+    background-position:-60px 0;
+}
+
+.icon-feed {
+    background-position:-90px 0;
+}
+
+/* :hover icon*/
+
+.icon-twitter:hover {
+    background-image: url(../images/ico-social-over.png);
+}
+
+.icon-facebook:hover {
+    background-image: url(../images/ico-social-over.png);
+}
+
+.icon-google-plus:hover {
+    background-image: url(../images/ico-social-over.png);
+}
+
+.icon-feed:hover {
+    opacity:1;
+}
+
+
+/* ARROW HEADER */
+.arrow-header{
+    background-image:url(../images/arrow-header.png);
+    width:65px;
+    height:35px;
+    display:block;
+    position:absolute;
+    bottom:10%;
+    left:50%;
+    margin-left:-32px;
+}
+
+/* ==========================================================================
+   2. General - Setting up some base styles
+   ========================================================================== */
+
+html {
+    height: 100%;
+    max-height: 100%;
+    font-size: 62.5%;
+}
+
+body {
+    height: 100%;
+    max-height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    line-height:1.1em;
+    color: #222;
+    margin:0;
+}
+
+::-moz-selection {
+    color: #222;
+    background: #f4f0eb;
+    text-shadow: none;
+}
+
+::selection {
+    color: #222;
+    background: #f4f0eb;
+    text-shadow: none;
+}
+
+input, select, textarea{border:0;outline:none}
+
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    line-height: 1;
+    margin-top: 0;
+    font-family: 'Raleway', sans-serif;
+    color:#737180;
+    text-transform: uppercase;
+    font-weight:600px;
+}
+
+h1 {
+    font-size: 4.5rem;
+    line-height: 1.1em;
+    margin-bottom:30px;
+}
+
+h2 {
+    font-size: 4rem;
+    line-height: 1.1em;
+    
+}
+
+h3 {
+    font-size: 3.5rem;
+}
+
+h4 {
+    font-size: 3rem;
+}
+
+h5 {
+    font-size: 2.5rem;
+}
+
+h6 {
+    font-size: 2rem;
+}
+
+a {
+    color: #222;
+    transition: all ease 0.3s;
+}
+
+
+
+h1 a, h2 a, h3 a,
+h4 a, h5 a, h6 a {
+    color: #737180;
+}
+
+
+p, ul, ol, dl {
+    margin: 10px 0;
+    font-size:1.4rem;
+    line-height:1.9em;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin:1.2em 0 0.6em 0;
+}
+
+ul + h1, ul + h2, ul + h3, ul + h4, ul + h5, ul + h6{
+    margin-top:1em;
+}
+
+
+
+ol ol, ul ul,
+ul ol, ol ul {
+    margin: 0.4em 0;
+}
+
+dl dt {
+    float: left;
+    width: 180px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: 1em
+}
+
+dl dd {
+    margin-left: 200px;
+    margin-bottom: 1em
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #f4f0eb;
+    margin: 3.2em 0;
+    padding: 0;
+}
+
+blockquote {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.6em 0 1.6em 0em;
+    padding: 0 0 0 1.6em;
+    border-left: #737180 0.4em solid;
+}
+
+blockquote p {
+    margin: 0.8em 0;
+    font-style: italic;
+}
+
+blockquote small {
+    display: inline-block;
+    margin: 0.8em 0 0.8em 1.5em;
+    font-size:0.9em;
+    color: #ccc;
+}
+
+blockquote small:before { content: '\2014 \00A0'; }
+
+blockquote cite {
+    font-weight:bold;
+}
+
+blockquote cite a { font-weight: normal; }
+
+mark {
+    background-color: #737180;
+}
+
+code, tt {
+    padding: 1px 3px;
+    font-family: Inconsolata, monospace, sans-serif;
+    font-size: 1em;
+    white-space: pre-wrap;
+    border: 1px solid rgba(115, 113, 128, 0.3);
+    background: #f4f0eb;
+    border-radius: 2px;
+}
+
+pre {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.6em 0;
+    border: 1px solid rgba(115, 113, 128, 0.3);
+    width: 100%;
+    padding: 10px;
+    font-family: Inconsolata, monospace, sans-serif;
+    font-size: 13px;
+    white-space: pre;
+    overflow: auto;
+    background: #f4f0eb;
+    border-radius: 3px;
+}
+
+pre code, tt {
+    font-size: inherit;
+    white-space: -moz-pre-wrap;
+    white-space: pre-wrap;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+kbd {
+    display: inline-block;
+    margin-bottom: 0.4em;
+    padding: 1px 8px;
+    border: #ccc 1px solid;
+    color: #666;
+    text-shadow: #fff 0 1px 0;
+    font-size: 13px;
+    font-weight: bold;
+    background: #f4f4f4;
+    border-radius: 4px;
+    box-shadow: 
+        0 1px 0 rgba(0, 0, 0, 0.2), 
+        0 1px 0 0 #fff inset;
+}
+
+table {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.6em 0;
+    width:100%;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+table th,
+table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #efefef;
+}
+
+table th { color: #000; }
+
+table caption + thead tr:first-child th,
+table caption + thead tr:first-child td,
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+
+table tbody + tbody { border-top: 2px solid #efefef; }
+
+table table table { background-color: #fff; }
+
+table tbody > tr:nth-child(odd) > td,
+table tbody > tr:nth-child(odd) > th {
+    background-color: #f6f6f6;
+}
+
+table.plain tbody > tr:nth-child(odd) > td,
+table.plain tbody > tr:nth-child(odd) > th {
+   background: transparent;
+}
+
+iframe, .fluid-width-video-wrapper {
+    display: block;
+    margin: 0;
+}
+
+/* When a video is inside the fitvids wrapper, drop the
+margin on the iframe, cause it breaks stuff. */
+.single-post-content .fluid-width-video-wrapper {
+    margin: 30px 0;
+}
+
+.single-post-content iframe{
+   margin: 30px 0; 
+}
+
+.fluid-width-video-wrapper iframe {
+    margin: 0;
+    border:0;
+}
+
+
+/* ==========================================================================
+   3. Utilities - These things get used a lot
+   ========================================================================== */
+
+/* Hides shit */
+.hidden {
+    text-indent: -9999px;
+    visibility: hidden;
+    display: none;
+}
+
+/* Creates a responsive wrapper that makes our content scale nicely */
+.inner {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Centres vertically yo. (IE8+) */
+.vertical {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* ==========================================================================
+   4. Header - The Header styles for the theme
+   ========================================================================== */
+
+
+/* Big cover image on the home page */
+.site-head {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background: #737180 no-repeat center center;
+    background-size: cover;
+    background-attachment:fixed;
+}
+
+.blog-logo {
+    text-decoration: none;
+    float:left;
+}
+
+
+/* Upload one in ghost/settings/ */
+.blog-logo img {
+    display: block;
+    max-height: 46px;
+    width: auto;
+    margin: 0 auto;
+    line-height: 0;
+}
+
+/* The details of your blog. Defined in ghost/settings/ */
+
+.blog-title {
+    margin: 0;
+    font-size: 7.3rem;
+    line-height: 1em;
+    font-weight: 700;
+    color:#fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.blog-description {
+    margin: 0;
+    font-size: 2.15rem;
+    line-height: 1.3em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+    color:#9c8f9a;
+    padding-bottom:10px;
+    display:inline-flex;
+    opacity:.7;
+} 
+
+.blog-social{
+    margin-top:10px;
+}
+
+.blog-social a img{
+    width:100%;
+}
+
+.blog-social a{
+    display:inline-block;
+    width:40px;
+    margin:10px 5px;
+    opacity:0.5;
+}
+
+.blog-social a:hover{
+    opacity:1;
+}
+
+/* ==========================================================================
+   5. Main Menu - The main menu
+   ========================================================================== */
+
+main.content{
+    position:relative;
+    z-index: 9999;
+}
+
+main.content-index{
+    margin-top:-46px;
+}
+
+.bk-top-nav{
+    background-size: cover;
+    background-position: center top;
+    background-attachment:fixed;
+}
+
+nav.top-nav{
+    background: rgba(50,54,81,.4);
+    height:46px;
+}
+
+nav.top-nav .cont-top-nav{
+    max-width:880px;
+    margin:0 auto;
+    padding:0;
+}
+
+nav.top-nav ul{
+    list-style-type:none;
+    float:right;
+    margin:0;
+}
+
+nav.top-nav ul li{
+    float:left;
+    margin:0;
+    overflow:hidden;
+}    
+
+nav.top-nav ul li a{
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-weight:200;
+    font-size:1.3rem;
+    line-height:1.3em;
+    color: rgba(255,255,255,.5);
+    padding:15px 15px;
+    text-decoration:none;
+    display:block;
+}
+
+nav.top-nav ul li a.active, nav.top-nav ul li a:hover{
+    color:#fff;
+}
+
+
+/* main post and grid/list view*/
+
+#view-menu{
+    background-color:#f4f0eb;
+    padding:15px 0;
+    min-height:30px;
+    
+}
+
+.view-menu-cont{
+    max-width: 880px;
+    margin: 0 auto;
+    position:relative;
+}
+
+.btn-select{
+    float:left;
+    padding:6px 20px 5px 35px;
+    display: block;
+    background:url(../images/ico-menu.png) no-repeat 10px 50%;
+    border:1px solid #737180;
+    color:#737180;
+    font-size:1.3rem;
+    line-height:1.3em;
+}
+
+
+ul.menu-list-tag{
+    list-style-type:none;
+    width:100%;
+    margin:0;
+    padding:0;
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+}
+
+
+ul.menu-list-tag li{
+    float:left;
+    margin:15px 5px 0 0 ;
+    
+}
+
+ul.menu-list-tag li a, ul.menu-list-tag li span{
+    text-decoration:none;
+    padding:5px 10px;
+    border:1px solid #737180;
+    color:#737180;
+    font-size:1.3rem;
+    line-height:1.1em;
+    display:block;
+}
+
+ul.menu-list-tag li a:hover{
+    background-color:#737180;
+    border:1px solid #737180;
+    color:#f4f0eb;
+    
+}
+
+.list-view{
+    position:absolute;
+    top:0;
+    right:35px;
+    width:30px;
+    height:30px;
+    margin-right:5px;
+    background-image:url(../images/ico-view-list.png);
+    transition: background ease 0.3s;
+
+}
+
+.grid-view{
+    position:absolute;
+    top:0;
+    right:0px;
+    float:left;
+    width:30px;
+    height:30px;
+    background-image:url(../images/ico-view-grid.png);
+    
+}
+
+.list-view:hover, .grid-view:hover, .list-view-active, .grid-view-active{
+    background-position:-30px 0;    
+}
+
+
+/* ==========================================================================
+   6. General Post - The general styles for the theme
+   ========================================================================== */
+
+/* Every post, on every page, gets this style on its <article> tag */
+
+.post {
+    position: relative;
+    max-width: 830px;
+    min-height:250px;
+    margin: 90px auto;
+    word-break: break-word;
+    hyphens: auto;
+    overflow:hidden;
+}
+
+/* Image post */
+
+.post.no-image {
+    min-height:0;
+}
+
+.post-image {
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.no-image .post-image{
+    display:none;
+}
+
+.no-image .post-cont {
+    float: left;
+    width: 100%;
+}
+
+.post-image p{
+    margin:0;
+    height:250px;
+    width:390px;
+    position:relative;
+    overflow:hidden;
+}
+
+.post-image iframe{
+    width:390px;
+    margin:0
+}
+
+.post-image img{
+    position:absolute;
+    width:100%;
+}
+
+/* Post excerpt */
+
+.post-excerpt p {
+    margin: 10px 0 ;
+    font-size: 1.3rem;
+    line-height: 1.6em;
+}
+
+/* Post header (list view) / Post info (grid view) */
+
+.post-data, .post-comment {
+    float:left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    line-height:1.6em;
+    color: #222;
+    margin-right:10px;
+    text-decoration: none;
+}
+
+.post-info .post-data, .post-info .post-comment{
+    display:none;
+}
+
+
+.post-comment {
+    background:url(../images/ico-comment.png) center left no-repeat;
+    padding: 0 0 0 18px; 
+}
+
+
+.post-title {
+    margin:10px 0 0 0;
+    width:100%;
+    display:inline-block;
+}
+
+.post-title a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+/* Post more for read more */
+
+a.post-more{
+    border:1px solid rgba(115, 113, 128, 0.3);
+    padding:5px 20px;
+    color:#737180;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 9px;
+    font-size: 1.3rem;
+    line-height:1.3em;
+}
+
+a.post-more:hover{
+   background-color:#737180;
+   color:#fff;
+}
+
+/* General */
+
+.publish-meta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4.3rem 0 4rem 0;
+    text-align: right;
+}
+
+.publish-heading {
+    display: block;
+    font-weight: bold;
+}
+
+.publish-date {
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+}
+
+
+.featured .ico-featured{
+    display:block;
+    position:absolute;
+    top:-1px;
+    right:-1px;
+    background-image:url(../images/ico-featured.png);
+    width:35px;
+    height:35px;
+}
+
+/* View list post */
+.post-cont {
+    float:right;
+    width:400px;
+}
+
+.list-cont-post .post{
+    left:0 !important;
+    top:0 !important;
+}
+
+.list-cont-post .post-image {
+    width:390px;
+}
+
+.list-cont-post h2{
+    font-size:3rem;
+}
+/* View grid post */
+
+.grid-cont-post{
+    position: relative;
+    max-width: 880px;
+    min-height:600px;
+    margin: 65px auto 0 auto;
+    overflow:hidden;
+}
+
+.grid-cont-post .post{
+    width:390px;
+    min-height:0;
+    margin:24px;
+    position:absolute;
+    overflow: visible;
+    border: 1px solid rgba(115, 113, 128, 0.3);
+}
+
+.grid-cont-post .post .post-cont {
+    float: none;
+    width: auto;
+}
+
+.grid-cont-post .post-title.post-title-grid{
+    display:block;
+    padding:10px;
+    margin:0;
+    font-size:2rem;
+    width:370px;
+}
+
+.grid-cont-post .post-image {
+    position:relative;
+}
+
+.grid-cont-post .post-image p{
+    height:auto;
+}
+
+.grid-cont-post .post-image p img{
+    position:relative;
+    display:block;
+}
+
+.grid-cont-post .post-excerpt{
+    display:none;
+}
+
+.grid-cont-post .no-image .post-excerpt{
+    display:block;
+}
+
+.grid-cont-post .no-image .post-cont .post-excerpt p{
+    margin:0;
+    padding:0 10px
+}
+
+.grid-cont-post .post-info{
+    z-index:9999;
+    padding:10px;
+    display:block;
+    overflow:hidden;
+    width:370px;
+}
+
+.grid-cont-post .post-header .post-data, .grid-cont-post .post-header .post-comment{
+    display:none;
+}
+
+.grid-cont-post .post-info .post-data, .grid-cont-post .post-info .post-comment{
+    display:block;
+    margin-top:5px
+}
+
+.grid-cont-post hr{
+    display:none;
+}
+
+.grid-cont-post .post-more{
+    margin:0;
+    float:right;
+}
+
+.hidden-tag-list{
+    display: none;
+}
+  
+
+/* ==========================================================================
+   7. Single Post - When you click on an individual post
+   ========================================================================== */
+
+
+.site-head-det{
+    height:50%
+}
+
+
+.post-template .post {
+    margin: 90px auto;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+.single-post-content{
+    width:100%;
+    margin: 0;
+    margin-top:20px;
+    font-size: 1.3rem;
+    line-height: 1.6em;
+    display:inline-block;
+}
+
+.single-post-content p{
+    font-size: 1.4rem;
+    line-height: 1.9em;
+    margin:20px 0;
+}
+
+
+h5.single-post-content-tag{
+    font-size: 1.8rem;
+    color: #737180;
+    margin: 80px 0 0 0 ;
+    padding-top:30px;
+    border-top: 1px solid #f4f0eb;
+}
+
+.single-post-content .menu-list-tag{
+    display:inline-block;
+}
+
+/* Keep large images within the bounds of the post-width */
+.single-post-content img{
+    display: block;
+    max-width: 100%;
+    margin: 30px auto;
+}
+
+/* The author credit area after the post */
+
+.user-image {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    float: left;
+    margin: -20px 20px 0 0 ;
+    text-align: center;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 5px solid #f4f0eb;
+    background: #f4f0eb;
+    z-index: 2;
+}
+
+.user-image .img {
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 100%;
+}
+
+.post-footer {
+    position: relative;
+    margin: 4rem 0 0 0;
+    padding: 4rem 0;
+    border-top: 1px solid #f4f0eb;
+    border-bottom: 1px solid #f4f0eb;
+    min-height: 70px;
+}
+
+.post-footer h4 {
+    font-size: 1.8rem;
+    color:#737180;
+    margin: 0;
+}
+
+.post-footer p {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    line-height: 1.6em;
+    min-height:50px;
+}
+
+/* Create some space to the right for the share links */
+.post-footer .author {
+    margin-right: 180px;
+}
+
+
+/* Drop the share links in the space to the right.
+   Doing it like this means it's easier for the author bio
+   to be flexible at smaller screen sizes while the share
+   links remain at a fixed width the whole time */
+
+.post-footer .share {
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    width: 140px;
+}
+
+.post-footer .share a {
+    width:30px;
+    height:30px;
+    display: inline-block;
+    margin: 1.4rem .6rem 1.6rem 0;
+}
+
+.post-footer .share a:hover {
+    color: #50585D;
+}
+
+/* Back all post */ 
+
+.back-post{
+    position: relative;
+    max-width: 880px;
+    margin: 5rem auto 5rem auto;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.back-post a {
+    font-size: 1.3rem;
+    line-height: 1.3em;
+    color: #737180;
+    border: 1px solid rgba(115, 113, 128, 0.3);
+    padding: 5px 60px;
+    text-decoration: none;
+}
+
+.back-post a:hover {
+    background-color:#737180;
+    color:#fff;
+}
+
+/*Social Static Page */
+
+.blog-social-page {
+    text-align: center;
+}
+
+.blog-social-page a{
+    margin-top:30px;
+}
+
+
+/* ==========================================================================
+   8. Third Party Elements - Embeds from other services
+   ========================================================================== */
+
+/* Github */
+
+.gist table {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.gist .line-number {
+    min-width: 25px;
+    font-size: 1.1rem;
+}
+
+
+/* ==========================================================================
+   9. Pagination - Tools to let you flick between pages
+   ========================================================================== */
+
+/* The main wrapper for our pagination links */
+.pagination {
+    position: relative;
+    max-width: 440px;
+    margin: 4rem auto;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.pagination a {
+    font-size:1.3rem;
+    line-height:1.3em;
+    color: #737180;
+    border:1px solid rgba(115, 113, 128, 0.3);
+    padding: 5px 0;
+    width:100%;
+    display:block;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color:#737180;
+    color:#fff;
+}
+
+
+/* ==========================================================================
+   10. Footer - The bottom of every page
+   ========================================================================== */
+
+.site-footer {
+    position: relative;
+    margin: 13rem 0 0 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.7em;
+    font-weight:300;
+    color: #fff;
+    text-align: center;
+    background-color: #58455a;
+    background-size: cover;
+    background-position:50% 70%;}
+
+.site-footer-over{
+    padding: 7rem 0;
+    background: rgba(50,54,81,.5);
+}
+
+.logo-footer img.logo-orange, .logo-footer img.logo-gold, .logo-footer img.logo-water{
+   display:none; 
+}
+
+.site-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #CCBBC1;
+}
+
+.copyright{
+    margin-top:20px
+}
+
+.poweredby .icon-ghost {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.poweredby .icon-ghost:hover {
+    text-decoration: none;
+}
+
+.poweredby .icon-ghost:before {
+    font-size: 1rem;
+    margin-right: 0.2em;
+}
+
+/* The subscribe icon on the footer */
+.subscribe {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    margin-left: -15px;
+    border: #737180 2px solid;
+    text-align: center;
+    line-height: 2.4rem;
+    border-radius: 50px;
+    transition: box-shadow 0.5s;
+}
+
+/* The RSS icon, inserted via icon font */
+.subscribe:before {
+    color: #737180;
+    font-size: 10px;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    font-weight: bold;
+    transition: color 0.5s ease;
+}
+
+/* CSS tooltip saying "Subscribe!" - initially hidden */
+.tooltip {
+    opacity:0;
+    display: inline-block;
+    padding: 4px 8px 5px 8px;
+    position:absolute;
+    top: -23px;
+    left: -20px;
+    color: rgba(255,255,255,0.9);
+    font-size: 1.1rem;
+    line-height: 1em;
+    text-align: center;
+    background: #737180;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: opacity 0.3s ease, top 0.3s ease;
+}
+
+/* The little chiclet arrow under the tooltip, pointing down */
+.tooltip:after {
+    content:"";
+    border-width:5px 5px 0 5px;
+    border-style:solid;
+    border-color: #737180 transparent;
+    display:block;
+    position:absolute;
+    bottom:-4px;
+    left:50%;
+    margin-left:-5px;
+    z-index: 220;
+    width:0;
+}
+
+/* On hover, show the tooltip! */
+.subscribe:hover .tooltip {
+    opacity: 1;
+    top: -33px;
+}
+
+
+/* ==========================================================================
+   11. Error - Castom page error
+   ========================================================================== */
+.blog-code-error{
+    margin: 0;
+    font-size: 9rem;
+    line-height: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.blog-message-error{
+    margin: 0;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    line-height: 1.3em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: #9c8f9a;
+    padding-bottom: 10px;
+    display: inline-flex;
+    opacity: .7;
+}
+
+.blog-beck-error{
+    display:inline-block;
+    font-size: 1.3rem;
+    line-height: 1.3em;
+    color: #737180;
+    border: 1px solid rgba(115, 113, 128, 0.3);
+    padding: 5px 60px;
+    text-decoration: none;
+}
+
+.blog-beck-error:hover{
+    border-color:#737180;
+    background-color:#737180;
+    color:#fff;
+}
+ 
+/* ==========================================================================
+   12. Media Queries - Smaller than 900px
+   ========================================================================== */
+
+@media only screen and (max-width: 900px) {
+
+    blockquote {
+        margin-left: 0;
+    }
+
+    .site-head {
+        -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; 
+         background-attachment:scroll;
+    }
+    
+
+
+    nav.top-nav .cont-top-nav {
+        max-width: 600px;
+        width: 80%;
+    }
+    
+    .view-menu-cont {
+        max-width: 600px;
+        width: 80%;
+    }
+    
+    .post-container{
+        margin-top:80px
+    }
+    
+    .post {
+        font-size: 13px;
+        line-height: 1.6em;
+        max-width: 600px;
+        width: 80%;
+        margin: 0 auto
+    }
+    
+    .post-cont {
+        float: none;
+        width: 100%;
+    }
+    
+    .post-image {
+        position:relative;
+        display:block;
+        margin-top: 10px;
+    }
+    
+    .post-image p{
+        width:100%
+    }
+    
+    .post-image iframe, .post-image img {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    /* View list */
+    
+    .list-cont-post .post-image {
+        width:100%;
+    }
+    
+    .list-cont-post h2{
+    font-size:2.4rem;
+    }
+    
+    /* View grid */
+    
+    .grid-cont-post{
+        padding: 40px 0;
+        margin-top:0;
+        height:auto !important;
+    }
+    
+    .grid-cont-post .post{
+        margin:40px auto 0 auto;
+        float:none;
+        max-width: 600px;
+        width: 80%;
+        position:relative;
+        top:0 !important;
+        left:0 !important;
+    }
+
+    .grid-cont-post .post-image {
+        margin-top: 0px;
+    }
+    
+    .grid-cont-post .post-info{
+        width:auto;
+    }
+    
+    .post-template .post {
+        padding-bottom: 1rem;
+    }
+    
+    .pagination {
+        width: 80%;
+        max-width: 600px;
+    }
+    
+    .post-footer{
+        text-align:center;
+    }
+
+    .post-footer .author {
+        margin: 0 0 2rem 0;
+        padding: 0 0 1.6rem 0;
+    }
+    
+    .user-image{
+        float:none;
+        margin:-20px auto 20px auto;
+    }
+    
+    .info-author{
+        width:100%;
+        display: inline-block;
+    }
+    
+    .post-footer .share {
+    position: static;
+    width: auto;
+    }
+    
+    .post-footer .share a {
+        margin: 1.4rem 0.8rem 0 0.8rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    h3 {
+        font-size: 3rem;
+    }
+
+    h4 {
+        font-size: 2.5rem;
+    }
+    
+    h5 {
+        font-size: 2rem;
+    }
+
+}
+
+/* ==========================================================================
+   13. Media Queries - Smaller than 500px
+   ========================================================================== */
+
+
+@media only screen and (max-width: 500px) {
+
+    .arrow-header{
+        width:30px;
+        height:16px;
+        bottom:20%;
+        left:50%;
+        margin-left:-15px;
+        background-size:100%;
+    }
+        
+    .site-head {
+    background-attachment:scroll;
+    }    
+    
+        
+    .blog-logo img {
+        max-height: 35px;
+    }
+    
+
+    .inner, 
+    .pagination {
+        width: 300px;
+    }
+    
+    .blog-title {
+        font-size: 3rem;
+    }
+
+    .blog-description {
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+    
+    .blog-social {
+        margin-top: 10px;
+    }
+    
+
+    .blog-social a{
+        width:35px;
+        margin:5px;
+    }
+    
+    .scroll-header {
+        display:none;
+    }
+    
+    main.content-index {
+    margin-top: -35px;
+    }
+    
+    nav.top-nav {
+        height: 35px;
+    }
+    
+    nav.top-nav .cont-top-nav {
+    width: 300px;
+    }
+
+    nav.top-nav ul {
+        width: auto;
+        padding:0
+    }
+    nav.top-nav ul li a {
+    padding: 10px 10px 9px 10px;
+    }
+
+    .view-menu-cont {
+        width: 300px;
+    }
+    
+    .post-container {
+        margin-top: 40px;
+    }
+    
+    .post-container.grid-cont-post{
+        margin-top:0
+    }
+
+    .post {
+        width:300px;
+        font-size: 0.8em;
+        line-height: 1.6em;
+        margin:40px auto;
+    }
+    
+    .post-cont {
+        float: none;
+        width: 300px;
+    }
+
+    .post-title{
+        font-size:3.2rem;
+    }
+    
+    .post-image p {
+        width:300px;
+        height:192px;
+    }
+    .post-image img{
+        width:100%
+    }
+    
+    .post-image iframe{
+        width:auto;
+    }
+    
+    /* View list */
+    
+    .list-cont-post h2{
+    font-size:2rem;
+    }
+    
+    /* View grid */
+    
+    .grid-cont-post .post-title.post-title-grid{
+        font-size:2rem;
+        width:93%
+    }
+    
+    .grid-cont-post{
+        width:300px;
+        height:100%;
+        padding: 40px 0 0 0;
+    }
+    
+    .grid-cont-post .post{
+        width:298px;
+        margin:40px 0 0 0;
+    }
+     
+     .grid-cont-post .post:first-child{
+        margin-top:0;
+    }
+    
+    
+    .grid-cont-post .post-info {
+        width: 278px;
+    }
+    
+    .grid-cont-post .post-info .post-comment {
+        display: none;
+    }
+
+    .blog-social-page a{
+        width:35px;
+        margin-top: 20px;
+    }
+    
+    
+    h1 {
+        font-size: 2.8rem;
+
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 2.3rem;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+    }
+    
+    h5 {
+        font-size: 1.5rem;
+    }
+
+    .post-template .post {
+        margin:40px auto;
+    }
+
+    .post-meta {
+        font-size: 1.3rem;
+    }
+    
+    .single-post-content {
+    margin-top: 0px;
+    }
+    
+    .single-post-content img {
+        margin: 10px auto;
+    }
+    
+    .single-post-content .fluid-width-video-wrapper {
+        margin: 20px 0;
+    }
+
+    .older-posts,
+    .newer-posts {
+        position: static;
+        margin: 10px 0;
+    }
+
+    .page-number {
+        display: block;
+    }
+
+    .site-footer {
+        margin-top: 6rem;
+        font-size: 1.1rem;
+    }
+
+}
+
+/* ==========================================================================
+   End of file. Media queries should be the last thing here. Do not add stuff
+   below this point, or it will probably fuck everything up.
+   ========================================================================== */
